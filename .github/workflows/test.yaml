@@ -1,0 +1,12 @@
+name: hello-world
+on: [push]
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is langesh from dever"
+      - run: echo "I am going to rule this dev world"
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Second job first step"
