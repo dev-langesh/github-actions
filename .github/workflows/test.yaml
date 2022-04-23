@@ -1,18 +1,21 @@
-name: hello-world
+name: data-sharing-bw-jobs
 on: [push]
 jobs:
-  first-job:
+  job1:
     runs-on: ubuntu-latest
+    outputs:
+      text: ${{steps.a.output.text}}
     steps:
-      - run: echo "This is langesh from dever"
-      - run: echo "I am going to rule this dev world"
-  second-job:
+      - name: job1
+        id: a
+        run: echo "::set-output-name=text::msg from first job"
+
+  job2:
     runs-on: ubuntu-latest
-    steps:
-      - run: echo "Second job first step"
-  third-job:
-    runs-on: ubuntu-latest
+    needs: job1
     env:
-      name: ${{secrets.NAME}}
+      text: ${{needs.job1.outputs.text}}
+
     steps:
-      - run: echo $name
+      - name: job2
+        run: echo $text
