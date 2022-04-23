@@ -13,6 +13,6 @@ jobs:
   third-job:
     runs-on: ubuntu-latest
     env:
-      name: ${{sectet.NAME}}
+      name: ${{secret.NAME}}
     steps:
       - run: echo $name
