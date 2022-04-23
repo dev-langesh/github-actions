@@ -10,3 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Second job first step"
+  third-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: actions/checkout@v2
+      - run: actions/setup-node@v2
+      - name: printing
+        run: node -v
